@@ -140,6 +140,8 @@ import ModalComment from '@/components/ModalComment.vue'
 import ModalCommentEdit from '@/components/ModalCommentEdit.vue'
 import ModalPostEdit from '@/components/ModalPostEdit.vue'
 
+import axios from 'axios'
+
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -197,30 +199,56 @@ export default {
       }
     },
     commentEdit: async function(id){
-      try {
-        let response = await fetch(`http://beta.kirillmakeev.ru/api/comment/${id}`)
-        if(response.status === 200){
-          let data = await response.json()
-          this.commentId = data._id
-          this.commentDescription = data.description
-          this.showModalCommentEdit = true
-        } else {
+      let token = localStorage.getItem('token')
+
+      if(token){
+        try {
+          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${id}`, {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Bearer ' + token
+            }
+          })
+          if(response.status === 200){
+            let data = await response.data
+            this.commentId = data._id
+            this.commentDescription = data.description
+            this.showModalCommentEdit = true
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при редактировании комментария')
+          }
+        } catch(err) {
           alert('Ошибка при редактировании комментария')
         }
-      } catch(err) {
-        alert('Ошибка при редактировании комментария')
+      } else {
+        this.logout()
       }
     },
     commentDelete: async function(id){
-      try {
-        let response = await fetch(`http://beta.kirillmakeev.ru/api/comment/${id}`, { method: 'DELETE' })
-        if(response.status === 200){
-          this.$router.go()
-        } else {
+      let token = localStorage.getItem('token')
+
+      if(token){
+        try {
+          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + token }
+          })
+          if(response.status === 200){
+            this.$router.go()
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при удалении комментария')
+          }
+        } catch(err) {
           alert('Ошибка при удалении комментария')
         }
-      } catch(err) {
-        alert('Ошибка при удалении комментария')
+      } else {
+        this.logout()
       }
     },
     postEdit: function(){
@@ -230,29 +258,43 @@ export default {
       this.showModalPostEdit = true
     },
     postDelete: async function(){
-      try {
-        let response = await fetch(`http://beta.kirillmakeev.ru/api/post/${this.post._id}`, {
-          method: 'DELETE'
-        })
-        if(response.status === 200){
-          this.$router.push('/blog')
-        } else {
+      let token = localStorage.getItem('token')
+
+      if(token){
+        try {
+          let response = await axios(`https://beta.kirillmakeev.ru/api/post/${this.post._id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + token }
+          })
+          if(response.status === 200){
+            this.$router.push('/blog')
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при удалении поста')
+          }
+        } catch(err) {
           alert('Ошибка при удалении поста')
         }
-      } catch(err) {
-        alert('Ошибка при удалении поста')
+      } else {
+        this.logout()
       }
     }
   },
   mounted: async function() {
-    let response = await fetch(`http://beta.kirillmakeev.ru/api/post/${this.id}`)
-    let post = await response.json()
-    post.comments.sort((a, b) => {
-      let dateA = new Date(a.date)
-      let dateB = new Date(b.date)
-      return dateB - dateA
-    })
-    this.post = post
+    try {
+      let response = await axios.get(`https://beta.kirillmakeev.ru/api/post/${this.id}`)
+      let post = await response.data
+      post.comments.sort((a, b) => {
+        let dateA = new Date(a.date)
+        let dateB = new Date(b.date)
+        return dateB - dateA
+      })
+      this.post = post
+    } catch(err) {
+      alert('Ошибка при получении данных поста')
+    }
   }
 }
 </script>

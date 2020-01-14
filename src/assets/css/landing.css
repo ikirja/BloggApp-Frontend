@@ -352,6 +352,10 @@
   color: rgb(204, 204, 204);
 }
 
+.form-landing-group__error {
+  display: block;
+}
+
 .form-landing-group__submit {
   margin: 20px auto;
   padding: 20px;

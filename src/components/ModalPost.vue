@@ -32,6 +32,10 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+import { mapActions } from 'vuex'
+
 export default {
   name: 'modalpost',
   data() {
@@ -43,24 +47,39 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     clicked() {
       this.$emit('close-modal', 'ModalPost')
     },
     addPost: async function() {
-      try {
-        let response = await fetch('http://beta.kirillmakeev.ru/api/post', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.postBody)
-        })
-        if(response.status === 200){
-          this.$emit('close-modal', 'ModalPost')
-          this.$router.go()
-        } else {
+      let token = localStorage.getItem('token')
+
+      if(token){
+        try {
+          let response = await axios('https://beta.kirillmakeev.ru/api/post', {
+            method: 'POST',
+            headers: { 
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            data: this.postBody
+          })
+          if(response.status === 200){
+            this.$emit('close-modal', 'ModalPost')
+            this.$router.go()
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при добавлении нового поста')
+          }
+        } catch(err) {
           alert('Ошибка при добавлении нового поста')
         }
-      } catch(err) {
-        alert('Ошибка при добавлении нового поста')
+      } else {
+        this.logout()
       }
     }
   }

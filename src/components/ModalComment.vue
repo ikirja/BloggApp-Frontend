@@ -27,6 +27,10 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+import { mapActions } from 'vuex'
+
 export default {
   props: [
     'id'
@@ -38,30 +42,45 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     clicked() {
       this.$emit('close-modal', 'ModalComment')
     },
     addComment: async function() {
-      let body = {
-        description: this.description,
-        post: this.id
-      }
+      let token = localStorage.getItem('token')
 
-      try {
-        let response = await fetch('http://beta.kirillmakeev.ru/api/comment', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
+      if(token){
+        let body = {
+          description: this.description,
+          post: this.id
+        }
 
-        if(response.status === 200){
-          this.$emit('close-modal', 'ModalComment')
-          this.$router.go()
-        } else {
+        try {
+          let response = await axios('https://beta.kirillmakeev.ru/api/comment', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            data: body
+          })
+
+          if(response.status === 200){
+            this.$emit('close-modal', 'ModalComment')
+            this.$router.go()
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при добавлении комментария')
+          }
+        } catch(err) {
           alert('Ошибка при добавлении комментария')
         }
-      } catch(err) {
-        alert('Ошибка при добавлении комментария')
+      } else {
+        this.logout()
       }
     }
   }

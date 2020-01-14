@@ -12,12 +12,12 @@
 
         <div class="form-group">
           <label for="header" class="form-group__label">Заголовок</label>
-          <input v-model="header" id="header" type="text" class="form-group__input">
+          <input v-model="newHeader" id="header" type="text" class="form-group__input">
         </div>
         
         <div class="form-group">
           <label for="description" class="form-group__label">Описание</label>
-          <textarea v-model="description" id="description" class="form-group__textarea"></textarea>
+          <textarea v-model="newDescription" id="description" class="form-group__textarea"></textarea>
         </div>
 
         <button
@@ -32,6 +32,10 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+import { mapActions } from 'vuex'
+
 export default {
   props: [
     'id',
@@ -39,30 +43,51 @@ export default {
     'description'
   ],
   name: 'modalpost',
+  data() {
+    return {
+      newHeader: this.header,
+      newDescription: this.description
+    }
+  },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     clicked() {
       this.$emit('close-modal', 'ModalPostEdit')
     },
     editPost: async function(id) {
-      let body = {
-        header: this.header,
-        description: this.description
-      }
+      let token = localStorage.getItem('token')
 
-      try {
-        let response = await fetch(`http://beta.kirillmakeev.ru/api/post/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-        if(response.status === 200){
-          this.$emit('close-modal', 'ModalPostEdit')
-          this.$router.go()
-        } else {
+      if(token){
+        let body = {
+          header: this.newHeader,
+          description: this.newDescription
+        }
+
+        try {
+          let response = await axios(`https://beta.kirillmakeev.ru/api/post/${id}`, {
+            method: 'PUT',
+            headers: { 
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            data: body
+          })
+          if(response.status === 200){
+            this.$emit('close-modal', 'ModalPostEdit')
+            this.$router.go()
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при добавлении нового поста')
+          }
+        } catch(err) {
           alert('Ошибка при добавлении нового поста')
         }
-      } catch(err) {
-        alert('Ошибка при добавлении нового поста')
+      } else {
+        this.logout()
       }
     }
   }

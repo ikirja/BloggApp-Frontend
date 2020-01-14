@@ -42,6 +42,7 @@
 <script>
 import ModalPost from '@/components/ModalPost.vue'
 import router from '@/router'
+import axios from 'axios'
 import { mapState } from 'vuex'
 
 export default {
@@ -62,14 +63,18 @@ export default {
   },
   methods: {
     getPosts: async function(){
-      let response = await fetch('http://beta.kirillmakeev.ru/api/posts')
-      let posts = await response.json()
-      posts.sort((a, b) => {
-        let dateA = new Date(a.date)
-        let dateB = new Date(b.date)
-        return dateB - dateA
-      })
-      this.posts = posts
+      try {
+        let response = await axios.get('https://beta.kirillmakeev.ru/api/posts')
+        let posts = await response.data
+        posts.sort((a, b) => {
+          let dateA = new Date(a.date)
+          let dateB = new Date(b.date)
+          return dateB - dateA
+        })
+        this.posts = posts
+      } catch(err) {
+        alert('Ошибка получения данных о постах')
+      }
     },
     toPost: function(id){
       router.push(`/blog/post/${id}`)

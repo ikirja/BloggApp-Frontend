@@ -86,7 +86,7 @@
           @click="showModal = true"
           class="main-section__section main-section__call-to-action_first"
         >
-          <button class="call-to-action call-to-action__item call-to-action__item_hot_pink_gradient">Заказать проект</button>
+          <button class="call-to-action call-to-action__item call-to-action__item_hot_pink_gradient">Связаться со мной</button>
         </div>
       </transition>
       <div class="main-section__section">
@@ -125,7 +125,7 @@
         @click="showModal = true"
         class="main-section__section"
       >
-        <button class="call-to-action call-to-action__item call-to-action__item_hot_pink_gradient">Заказать проект</button>
+        <button class="call-to-action call-to-action__item call-to-action__item_hot_pink_gradient">Связаться со мной</button>
       </div>
     </div>
 
@@ -135,10 +135,11 @@
           <span @click="showModal = false" class="modal__card_close">X</span>
           <div class="modal__card-inner">
             <h1 class="heading__item_size_1">Оставьте Ваш телефон</h1>
-            <p>И я в кратчайшие сроки свяжусь с Вами для обсуждения деталей разработки сайта, мобильного приложения или веб-системы.</p>
+            <p>Я свяжусь с Вами для обсуждения деталей разработки сайта, веб-системы или мобильного приложения.</p>
             <div class="form-landing-group">
-              <label for="lead" class="form-landing-group__caption">Ваш номер телефон или e-mail:</label>
+              <label for="lead" class="form-landing-group__caption">Ваш номер телефона или e-mail:</label>
               <input v-model="lead" id="lead" type="text" class="form-landing-group__item" placeholder="Укажите телефон или e-mail">
+              <small v-if="leadError" class="form-landing-group__error">Проверьте указанные Вами данные</small>
             </div>
             <button
               @click="sendLead"
@@ -156,6 +157,7 @@
 
 <script>
 import inViewportDirective from "vue-in-viewport-directive"
+import axios from 'axios'
 
 export default {
   name: 'landing',
@@ -166,29 +168,35 @@ export default {
     return {
       show: false,
       showModal: false,
-      lead: ''
+      lead: '',
+      leadError: false
     }
   },
   methods: {
     sendLead: async function(){
-      let body = {
-        text: this.lead
-      }
+      if(this.lead.length > 4){
+        let body = {
+          text: this.lead
+        }
 
-      try {
-        let response = await fetch('http://beta.kirillmakeev.ru/api/sendmail', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-        if(response.status === 200){
-          this.showModal = false
-          this.lead = ''
-        } else {
+        try {
+          let response = await axios('https://beta.kirillmakeev.ru/api/sendmail', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            data: body
+          })
+          if(response.status === 200){
+            this.showModal = false
+            this.lead = ''
+            this.leadError = false
+          } else {
+            alert('Ошибка отправки сообщения')
+          }
+        } catch(err) {
           alert('Ошибка отправки сообщения')
         }
-      } catch(err) {
-        alert('Ошибка отправки сообщения')
+      } else {
+        this.leadError = true
       }
     }
   },

@@ -12,7 +12,7 @@
         
         <div class="form-group">
           <label for="description" class="form-group__label">Ваш комментарий</label>
-          <textarea v-model="description" id="description" class="form-group__textarea"></textarea>
+          <textarea v-model="newDescription" id="description" class="form-group__textarea"></textarea>
         </div>
 
         <button
@@ -27,36 +27,59 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+import { mapActions } from 'vuex'
+
 export default {
   props: [
     'id',
     'description'
   ],
   name: 'modalcomment',
+  data() {
+    return {
+      newDescription: this.description
+    }
+  },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     clicked() {
       this.$emit('close-modal', 'ModalCommentEdit')
     },
     editComment: async function() {
-      let body = {
-        description: this.description
-      }
+      let token = localStorage.getItem('token')
 
-      try {
-        let response = await fetch(`http://beta.kirillmakeev.ru/api/comment/${this.id}`, { 
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-        
-        if(response.status === 200){
-          this.$emit('close-modal', 'ModalCommentEdit')
-          this.$router.go()
-        } else {
+      if(token){
+        let body = {
+          description: this.newDescription
+        }
+
+        try {
+          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${this.id}`, { 
+            method: 'PUT',
+            headers: { 
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            data: body
+          })
+          if(response.status === 200){
+            this.$emit('close-modal', 'ModalCommentEdit')
+            this.$router.go()
+          } else if(response.status === 401){
+            this.logout()
+            alert('Вы не авторизованы. Пожалуйста, авторизуйтесь!')
+          } else {
+            alert('Ошибка при редактировании комментария')
+          }
+        } catch(err) {
           alert('Ошибка при редактировании комментария')
         }
-      } catch(err) {
-        alert('Ошибка при редактировании комментария')
+      } else {
+        this.logout()
       }
     }
   }
