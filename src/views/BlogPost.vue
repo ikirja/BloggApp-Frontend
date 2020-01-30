@@ -203,7 +203,7 @@ export default {
 
       if(token){
         try {
-          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${id}`, {
+          let response = await axios(`${process.env.VUE_APP_API}/api/comment/${id}`, {
             method: 'GET',
             headers: {
               'Authorization': 'Bearer ' + token
@@ -232,7 +232,7 @@ export default {
 
       if(token){
         try {
-          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${id}`, {
+          let response = await axios(`${process.env.VUE_APP_API}/api/comment/${id}`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + token }
           })
@@ -262,7 +262,7 @@ export default {
 
       if(token){
         try {
-          let response = await axios(`https://beta.kirillmakeev.ru/api/post/${this.post._id}`, {
+          let response = await axios(`${process.env.VUE_APP_API}/api/post/${this.post._id}`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + token }
           })
@@ -284,7 +284,7 @@ export default {
   },
   mounted: async function() {
     try {
-      let response = await axios.get(`https://beta.kirillmakeev.ru/api/post/${this.id}`)
+      let response = await axios.get(`${process.env.VUE_APP_API}/api/post/${this.id}`)
       let post = await response.data
       post.comments.sort((a, b) => {
         let dateA = new Date(a.date)

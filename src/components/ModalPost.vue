@@ -58,7 +58,7 @@ export default {
 
       if(token){
         try {
-          let response = await axios('https://beta.kirillmakeev.ru/api/post', {
+          let response = await axios(process.env.VUE_APP_API + '/api/post', {
             method: 'POST',
             headers: { 
               'Authorization': 'Bearer ' + token,

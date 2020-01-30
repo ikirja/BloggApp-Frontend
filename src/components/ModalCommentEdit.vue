@@ -58,7 +58,7 @@ export default {
         }
 
         try {
-          let response = await axios(`https://beta.kirillmakeev.ru/api/comment/${this.id}`, { 
+          let response = await axios(`${process.env.VUE_APP_API}/api/comment/${this.id}`, { 
             method: 'PUT',
             headers: { 
               'Authorization': 'Bearer ' + token,

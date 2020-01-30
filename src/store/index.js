@@ -33,7 +33,7 @@ export default new Vuex.Store({
 
       if(token){
         try {
-          let response = await axios.get('https://beta.kirillmakeev.ru/api/user', {
+          let response = await axios.get(process.env.VUE_APP_API + '/api/user', {
             headers: { 'Authorization': 'Bearer ' + token }
           })
           if(response.status === 200) {
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         let response = await axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: 'https://beta.kirillmakeev.ru/api/login',
+          url: process.env.VUE_APP_API + '/api/login',
           data: body
         })
         if(response.status === 200){
@@ -66,7 +66,7 @@ export default new Vuex.Store({
     },
     logout: async (context) => {
       try {
-        let response = await axios.get('https://beta.kirillmakeev.ru/api/logout')
+        let response = await axios.get(process.env.VUE_APP_API + '/api/logout')
         if(response.status === 200){
           localStorage.removeItem('token')
           context.commit('logout')
@@ -79,8 +79,11 @@ export default new Vuex.Store({
     },
     register: async (context, body) => {
       try {
-        let response = await axios.post('https://beta.kirillmakeev.ru/api/register', {
-          headers: { 'Content-Type': 'application/json' },
+        let response = await axios(process.env.VUE_APP_API + '/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           data: body
         })
         if(response.status === 200){

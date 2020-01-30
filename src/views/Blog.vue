@@ -64,7 +64,7 @@ export default {
   methods: {
     getPosts: async function(){
       try {
-        let response = await axios.get('https://beta.kirillmakeev.ru/api/posts')
+        let response = await axios.get(process.env.VUE_APP_API + '/api/posts')
         let posts = await response.data
         posts.sort((a, b) => {
           let dateA = new Date(a.date)

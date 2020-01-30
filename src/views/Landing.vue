@@ -180,7 +180,7 @@ export default {
         }
 
         try {
-          let response = await axios('https://beta.kirillmakeev.ru/api/sendmail', {
+          let response = await axios(process.env.VUE_APP_API + '/api/sendmail', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             data: body

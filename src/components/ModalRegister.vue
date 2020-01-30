@@ -22,7 +22,7 @@
 
         <div class="form-group">
           <label for="password" class="form-group__label">Пароль</label>
-          <input v-model="bodyRegister.password" id="password" type="text" class="form-group__input">
+          <input v-model="bodyRegister.password" id="password" type="password" class="form-group__input">
         </div>
 
         <button
