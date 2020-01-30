@@ -1,4 +1,4 @@
-# bloggapp
+# bloggapp-frontend
 
 ## Project setup
 ```
