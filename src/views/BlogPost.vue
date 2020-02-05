@@ -88,6 +88,13 @@
             Зарегистрироваться
           </button>
           <button
+            v-if="!authenticated"
+            @click="showModalForgot = true"
+            class="comments-button comments-button__register"
+          >
+            Забыли пароль?
+          </button>
+          <button
             v-if="authenticated"
             @click="logout"
             class="comments-button comments-button__login"
@@ -107,6 +114,11 @@
 
     <ModalRegister
       v-if="showModalRegister"
+      @close-modal="closeModal"
+    />
+
+    <ModalForgot
+      v-if="showModalForgot"
       @close-modal="closeModal"
     />
 
@@ -139,6 +151,7 @@ import ModalRegister from '@/components/ModalRegister.vue'
 import ModalComment from '@/components/ModalComment.vue'
 import ModalCommentEdit from '@/components/ModalCommentEdit.vue'
 import ModalPostEdit from '@/components/ModalPostEdit.vue'
+import ModalForgot from '@/components/ModalForgot.vue';
 
 import axios from 'axios'
 
@@ -154,7 +167,8 @@ export default {
     ModalRegister,
     ModalComment,
     ModalCommentEdit,
-    ModalPostEdit
+    ModalPostEdit,
+    ModalForgot
   },
   data() {
     return {
@@ -164,6 +178,8 @@ export default {
       showModalComment: false,
       showModalCommentEdit: false,
       showModalPostEdit: false,
+      showModalForgot: false,
+      showModalReset: false,
       commentId: '',
       commentDescription: '',
       postId: '',
@@ -196,6 +212,12 @@ export default {
       }
       if(value === 'ModalPostEdit'){
         this.showModalPostEdit = false
+      }
+      if(value === 'ModalForgot'){
+        this.showModalForgot = false
+      }
+      if(value === 'ModalReset'){
+        this.showModalReset = false
       }
     },
     commentEdit: async function(id){
