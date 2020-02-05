@@ -216,9 +216,6 @@ export default {
       if(value === 'ModalForgot'){
         this.showModalForgot = false
       }
-      if(value === 'ModalReset'){
-        this.showModalReset = false
-      }
     },
     commentEdit: async function(id){
       let token = localStorage.getItem('token')

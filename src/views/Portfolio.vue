@@ -7,9 +7,15 @@
       </div>
       <div class="portfolio-content">
         <h1 class="heading__item_size_1 heading__item_amphesize">Проект &laquo;Город Знаний&raquo;</h1>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
+        <p class="paragraph__item">
+          Основной задачей по проекту &laquo;Город Знаний&raquo; стояла модернизация текущего сайта образовательного центра. После его изучения &mdash; не современный дизайн, отсутствие адаптивности, нет административной панели для управления контентом, сам сайт представлял из себя просто набор html/css файлов &mdash; было принято решение разработать абсолютно новый ресурс, от дизайна до стека технологий.
+        </p>
+        <p class="paragraph__item">
+          Для максимальной эффектиности и скорости работы мной был выбран уже привычный стек MEEN (MongoDB, Express, EJS, NodeJS). Использование front end фреймворка показалось бессмысленным, решено было использовать EJS для серверного рендеринга. Для начала проработали концепцию, благо было от чего отталкиваться. Сам центр уже имел дизайн помещения с обоями-городом, красивыми облаками, общей яркой стилистикой. Дизайнер отрисовал дома, воздушные шары и облака в векторе, подобрали шрифт DRUM для использования в заголовках. Несколько итераций дизайна главной страницы показали, что ярко-красный цвет самый оптимальный для использования. Именно в таком стиле и были мной отрисованы оставшиеся дизайн-макеты страниц.
+        </p>
+        <p class="paragraph__item">
+          Сверстав все страницы, была произведена интеграция со стеком, разработаны все маршруты, а также отдельно административная панель. Так как сайт не предполагает множественные роли для управления, аутентификация была реализована без логина/пароля, а исключительно по токену. Запустив проект, было очень приятно слушать хвалебные отзывы как руководства образовательного центра &laquo;Город Знаний&raquo;, так и учеников, а также их родителей!
+        </p>
         <a class="portfolio-content__project-link" href="https://www.gorodznany.ru/" target="_blank">www.gorodznany.ru</a>
       </div>
     </div>
@@ -20,8 +26,15 @@
       </div>
       <div class="portfolio-content">
         <h1 class="heading__item_size_1 heading__item_amphesize">Проект &laquo;Платформа EasyOneWeb&raquo;</h1>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
-        <a class="portfolio-content__project-link" href="https://www.zumba24.ru/" target="_blank">www.zumba24.ru</a>
+        <p class="paragraph__item">
+          Наша студия с одноименным названием разработала свою собственную платформу для реализации веб проектов. Данная платформа работает в тандеме с 1С:Предприятие, которое в свою очередь выполняет роль ведущего back end сервера.
+        </p>
+        <p class="paragraph__item">
+          Платформа уникальна! Она предоставляет громадные возможности по взаимодействию с посетителями, получая и храня все данные в 1С. Интернет-магазин на нашей платформе не нуждается в синхронизациях (тех самых пресловутых обменах данными), всю информацию наша платформа получает в режиме реального времени: цены, остатки, актуальная информация по товару, категориям, документооборот (выставление счетов, актов и счет-фактур, актов-сверки), управление пользователями (контрагентами и партнерами в 1С). Абсолютно всё происходит моментально. Личный кабинет пользователя имеет прямой доступ к документам 1С. А ещё для 1000 уникальных посетителей в минуту для нашей платформы достаточно виртуального сервера с 1 CPU и 1Gb RAM!
+        </p>
+        <p class="paragraph__item">
+          Более подробное описание Вы можете прочитать на сайте студии. На все вопросы я всегда готов дать ответы, пишите! В данный момент платформа получила статус БЕТА версии 1.0! А дорожная карта (roadmap) просто гигантская! Следите за новостями, наша платформа с каждым днём обрастает новым функционалом, и будет только совершенствоваться!
+        </p>
         <a class="portfolio-content__project-link" href="https://www.easyoneweb.ru/" target="_blank">www.easyoneweb.ru</a>
       </div>
     </div>
@@ -32,8 +45,15 @@
       </div>
       <div class="portfolio-content">
         <h1 class="heading__item_size_1 heading__item_amphesize">Проект &laquo;КриптоБанк&raquo;</h1>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
-        <p class="paragraph__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt hic atque possimus, nam dolores numquam quae debitis laborum adipisci consectetur repudiandae fuga magnam. Voluptates impedit delectus nobis eum cum.</p>
+        <p class="paragraph__item">
+          Заказчиком была поставлена задача: разработать сайт, включающий в себя лендинг, статичные страницы, личный кабинет и административную панель. Это один из первых моих проектов на стеке MEEN.
+        </p>
+        <p class="paragraph__item">
+          Было разработано множество систем/компонентов, которые давали возможность клиентам управлять своими вкладами и кредитами в криптовалюте. Личный кабинет: регистрация, подтверждение адреса электронной почты, подтверждение номера телефона, двухфакторная аутентификация с использованием Google Auth, защита входа с помощью Google Re:captcha, создание продукта-депозита, создание продукта-кредита, пополнение с помощью QR-кода, генерация электронных писем с подтверждием данных, система транзакций для пополнения/убавления баланса. Административная панель: управление пользователями, управление подтвержденными аккаунтами, создание тарифов, управление транзакциями (включая проведение), управление ролями пользователей (администратор, клиент).
+        </p>
+        <p class="paragraph__item">
+          Данный проект был разработан в срок 3 месяца.
+        </p>
       </div>
     </div>
   </div>

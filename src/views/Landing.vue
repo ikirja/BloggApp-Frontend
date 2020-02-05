@@ -97,7 +97,7 @@
         </div>
         <div v-in-viewport.once class="main-section__info main-section__front-end">
           <h1 class="heading__item_size_1 heading__item_amphesize">Front end разработка</h1>
-          <p class="paragraph__item">Разработка дизайн-макетов и вёрстка на современных технологиях. Разработка публичной части веб ресурса на VueJS для клиентского рендеринга или EJS для серверного рендеринга. Разработка взаимодействия с требуемым REST API. Разработка ведётся по принципу mobile first: разрабатывается макет для мобильных устройств, адаптация для desktop.</p>
+          <p class="paragraph__item">Разработка дизайн-макетов и вёрстка на современных технологиях. Разработка публичной части веб ресурса на VueJS для клиентского рендеринга или EJS для серверного рендеринга. Разработка взаимодействия с требуемым REST API. Разработка ведётся по принципу mobile first: разрабатывается макет для мобильных устройств, адаптация для desktop. Качество, соблюдение сроков исполнения - мои визитные карточки!</p>
         </div>
       </div>
       <div class="main-section__section">
@@ -107,7 +107,7 @@
         </div>
         <div v-in-viewport.once class="main-section__info main-section__back-end">
           <h1 class="heading__item_size_1 heading__item_amphesize">Back end разработка</h1>
-          <p class="paragraph__item">Разработка back end веб приложений на NodeJS/ExpressJS/MongoDB. REST API. Комплесная full stack разработка веб-системы с back end и front end приложениями.</p>
+          <p class="paragraph__item">Разработка back end веб приложений на NodeJS/ExpressJS/MongoDB. REST API. Проработка архитектуры приложения. Комплексная full stack разработка веб-системы с back end и front end приложениями.</p>
         </div>
       </div>
       <div class="main-section__section">
@@ -118,7 +118,7 @@
         </div>
         <div v-in-viewport.once class="main-section__info main-section__mobile-apps">
           <h1 class="heading__item_size_1 heading__item_amphesize">Мобильные приложения</h1>
-          <p class="paragraph__item">Разработка мобильных приложений для операционных систем iOS и Android на платформе Ionic.</p>
+          <p class="paragraph__item">Разработка мобильных приложений для операционных систем iOS и Android на платформе Ionic и VueJS. Работа приложения с готовыми REST API. Возможно разработать собственный REST API (NodeJS/Express). Клиентское приложение для Вашего сайта с REST API.</p>
         </div>
       </div>
       <div

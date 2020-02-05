@@ -25,6 +25,11 @@
           <input v-model="bodyRegister.password" id="password" type="password" class="form-group__input">
         </div>
 
+        <div class="form-group">
+          <label for="email" class="form-group__label">E-mail</label>
+          <input v-model="bodyRegister.email" id="email" type="email" class="form-group__input">
+        </div>
+
         <button
           @click="sendRegister"
           class="form-group__submit"
@@ -46,7 +51,8 @@ export default {
       bodyRegister: {
         name: '',
         username: '',
-        password: ''
+        password: '',
+        email: ''
       }
     }
   },

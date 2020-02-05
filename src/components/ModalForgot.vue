@@ -11,8 +11,8 @@
         <h3 class="heading__item_size_3 heading__item_dark modal__heading">Сброс пароля</h3>
         
         <div class="form-group">
-          <label for="name" class="form-group__label">Введите Ваш логин</label>
-          <input v-model="form.username" type="text" class="form-group__input">
+          <label for="username" class="form-group__label">Введите Ваш логин</label>
+          <input v-model="form.username" id="username" type="text" class="form-group__input">
         </div>
 
         <button
@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     clicked() {
-      this.$emit('close-modal', 'ModalReset')
+      this.$emit('close-modal', 'ModalForgot')
     },
     async forgotPassword() {
       try {
