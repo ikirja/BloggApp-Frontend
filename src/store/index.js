@@ -42,7 +42,7 @@ export default new Vuex.Store({
             context.commit('logout')
           }
         } catch(err) {
-          alert('Ошибка 1000: обратитесь к администратору сайта')
+          alert('Ваша авторизация не актуальна. Пожалуйста, авторизуйтесь заново')
         }
       }
     },
