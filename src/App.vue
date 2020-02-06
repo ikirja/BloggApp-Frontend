@@ -30,7 +30,7 @@
     </div>
     <router-view/>
     <div class="footer">
-      Кирилл Макеев &copy; 2019-2020.<br>Работает на: <a class="footer__link" href="https://github.com/ikirja/BloggApp" target="_blank">BloggApp 2.0</a><br>Все права защищены.
+      Кирилл Макеев &copy; 2019-2020.<br>Работает на: <a class="footer__link" href="https://github.com/ikirja/BloggApp" target="_blank">BloggApp 2.0</a><br><a class="footer__link" href="/confidential">Политика конфиденциальности</a><br>Все права защищены.
     </div>
   </div>
 </template>

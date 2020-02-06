@@ -4,6 +4,7 @@ import Landing from '@/views/Landing.vue'
 import Portfolio from '@/views/Portfolio.vue'
 import Blog from '@/views/Blog.vue'
 import BlogPost from '@/views/BlogPost.vue'
+import Confidential from '@/views/Confidential.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,12 @@ const routes = [
     path: '/blog/post/:id',
     name: 'blogpost',
     component: BlogPost,
+    props: true
+  },
+  {
+    path: '/confidential',
+    name: 'confidential',
+    component: Confidential,
     props: true
   }
 ]
